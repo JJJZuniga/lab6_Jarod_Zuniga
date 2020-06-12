@@ -44,17 +44,10 @@ public class Universo {
         this.lista = lista;
     }
 
-    public File getArchivo() {
-        return archivo;
-    }
-
-    public void setArchivo(File archivo) {
-        this.archivo = archivo;
-    }
 
     @Override
     public String toString() {
-        return "Universo{" + "nombreU=" + nombreU + ", lista=" + lista + ", archivo=" + archivo + '}';
+        return "Universo{" + "nombreU=" + nombreU + ", lista=" + lista ;
     }
 
     public void setSeresVivos(Sere_Vivos p) {

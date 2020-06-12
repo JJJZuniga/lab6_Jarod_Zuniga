@@ -283,6 +283,7 @@ public class Gitama extends javax.swing.JFrame {
         jTextField2.setText("");
         jTextField3.setText("");
         jTextField4.setText("");
+        JOptionPane.showMessageDialog(this, "Listo");
     }//GEN-LAST:event_limpperActionPerformed
 
     private void aggperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggperActionPerformed
@@ -294,6 +295,7 @@ public class Gitama extends javax.swing.JFrame {
         planeta = jTextField4.getText();
         raza = (String) jComboBox1.getSelectedItem();
         personas.add(new Sere_Vivos(nombre, poder, años, planeta, raza));
+        JOptionPane.showMessageDialog(this, "Agregado Correctamente");
     }//GEN-LAST:event_aggperActionPerformed
 
     private void crearUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUActionPerformed
@@ -308,22 +310,25 @@ public class Gitama extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jTextField5.setText("");
+        JOptionPane.showMessageDialog(this, "Listo");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            String name = jTextField5.getText();
-            universi.add(new Universo(name));
-            Universo f=new Universo(name);
-            f.getLista().add(aggpers);
-            f.setLista(aggpers);
-            f.escribirArchivo();
-            
+            Universo ap = new Universo("./universos.txt");
+            ap.cargarArchivo();
+            int c, e;
+            String n;
+            n = jTextField5.getText();
+            for (int i = 0; i < aggpers.size(); i++) {
+                
+                ap.getLista().add(aggpers.get(i));
+            }   
+            ap.escribirArchivo();
         } catch (IOException ex) {
             Logger.getLogger(Gitama.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -337,12 +342,13 @@ public class Gitama extends javax.swing.JFrame {
         }
 //Asociar el modelo de lista al JList
         jList1.setModel(listModel);
+        JOptionPane.showMessageDialog(this, "Listo");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         aggpers.clear();
         int a = jList1.getSelectedIndex();
-        aggpers.add(personas.get(a));
+        aggpers.add((Sere_Vivos) personas.get(a));
         personas.remove(a);
         //Crear un objeto DefaultListModel
         DefaultListModel listModel = new DefaultListModel();
@@ -353,45 +359,46 @@ public class Gitama extends javax.swing.JFrame {
         }
 //Asociar el modelo de lista al JList
         jList1.setModel(listModel);
+        JOptionPane.showMessageDialog(this, "Agregado Correctamente");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         JFileChooser jfc = new JFileChooser();
-            FileNameExtensionFilter filtro
-                    = new FileNameExtensionFilter(
-                            "Archivos de Texto", "txt");
-            jfc.addChoosableFileFilter(filtro);
-            int seleccion = jfc.showSaveDialog(this);
-            FileWriter fw = null;
-            BufferedWriter bw = null;
-            if (seleccion == JFileChooser.APPROVE_OPTION) {
-                try {
-                    
-                    File fichero = null;
-                    if (jfc.getFileFilter().getDescription().equals(
-                            "Archivos de Texto")) {
-                        fichero
-                                = new File(jfc.getSelectedFile().getPath() + ".txt");
-                    } else {
-                        fichero = jfc.getSelectedFile();
-                    }
-                    fw = new FileWriter(fichero);
-                    bw = new BufferedWriter(fw);
-                    bw.write(jTextField5.getText());
-                    jTextField5.setText("");
-                    bw.flush();
-                    JOptionPane.showMessageDialog(this,
-                            "Archivo guardado exitosamente");
-                    
-                } catch (Exception e) {
-                    e.printStackTrace();
+        FileNameExtensionFilter filtro
+                = new FileNameExtensionFilter(
+                        "Archivos de Texto", "txt");
+        jfc.addChoosableFileFilter(filtro);
+        int seleccion = jfc.showSaveDialog(this);
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            try {
+                
+                File fichero = null;
+                if (jfc.getFileFilter().getDescription().equals(
+                        "Archivos de Texto")) {
+                    fichero
+                            = new File(jfc.getSelectedFile().getPath() + ".txt");
+                } else {
+                    fichero = jfc.getSelectedFile();
                 }
-                try {
-                    bw.close();
-                    fw.close();
-                } catch (IOException ex) {
-                }
-            }//fin IF
+                fw = new FileWriter(fichero);
+                bw = new BufferedWriter(fw);
+                bw.write(jTextField5.getText());
+                jTextField5.setText("");
+                bw.flush();
+                JOptionPane.showMessageDialog(this,
+                        "Archivo guardado exitosamente");
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+            }
+        }//fin IF
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
@@ -408,21 +415,21 @@ public class Gitama extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
+                    
                 }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Gitama.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Gitama.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Gitama.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Gitama.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -483,7 +490,4 @@ ArrayList personas = new ArrayList();
     ArrayList universi = new ArrayList();
     ArrayList<Sere_Vivos> aggpers = new ArrayList();
     
-
-
-
 }
