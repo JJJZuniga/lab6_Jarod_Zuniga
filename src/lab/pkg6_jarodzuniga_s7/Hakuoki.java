@@ -5,16 +5,19 @@
  */
 package lab.pkg6_jarodzuniga_s7;
 
+import java.util.ArrayList;
+import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
+
 /**
  *
  * @author Jhon Zuniga
  */
-public class Hakuōki extends javax.swing.JFrame {
+public class Hakuoki extends javax.swing.JFrame {
 
     /**
      * Creates new form Hakuōki
      */
-    public Hakuōki() {
+    public Hakuoki() {
         initComponents();
     }
 
@@ -27,17 +30,131 @@ public class Hakuōki extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        crearper = new javax.swing.JFrame();
+        salper = new javax.swing.JButton();
+        aggper = new javax.swing.JButton();
+        limpper = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        crearuni = new javax.swing.JFrame();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        crearp = new javax.swing.JButton();
+        crearU = new javax.swing.JButton();
+        sal = new javax.swing.JButton();
+        admin = new javax.swing.JButton();
+        mos = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        crearper.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Crear Persona");
+        salper.setText("Salir");
+        salper.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salperActionPerformed(evt);
+            }
+        });
+        crearper.getContentPane().add(salper, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 470, -1, -1));
 
-        jButton2.setText("Crear Planeta");
+        aggper.setText("Agregar");
+        aggper.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aggperActionPerformed(evt);
+            }
+        });
+        crearper.getContentPane().add(aggper, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 473, -1, -1));
+
+        limpper.setText("Limpiar");
+        limpper.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpperActionPerformed(evt);
+            }
+        });
+        crearper.getContentPane().add(limpper, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Viner Hand ITC", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel3.setText("Crear nuevo guerrero");
+        crearper.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, 60));
+        crearper.getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 310, 20));
+        crearper.getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 310, -1));
+        crearper.getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 310, -1));
+        crearper.getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 310, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel5.setText("Raza:");
+        crearper.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, 20));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel6.setText("Planeta:");
+        crearper.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, 20));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel7.setText("Años:");
+        crearper.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, 20));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel8.setText("Poder (1-10):");
+        crearper.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, 20));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel9.setText("Nombre:");
+        crearper.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, 20));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Humano", "Amanto" }));
+        crearper.getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 310, -1));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jhon Zuniga\\Documents\\NetBeansProjects\\Lab#6_JarodZuniga_s7\\6252336ada5008f42d5627bc9e8f72577a4bad994b33224c0b5b2acff683010c._V_SX1080_.jpg")); // NOI18N
+        crearper.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-290, -40, -1, -1));
+
+        jLabel4.setText("jLabel4");
+
+        crearuni.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Viner Hand ITC", 1, 36)); // NOI18N
+        jLabel11.setText("Crear universo");
+        crearuni.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+
+        jLabel12.setText("Nombre del unverso:");
+        crearuni.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
+        crearuni.getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 370, -1));
+
+        jButton1.setText("Crear");
+        crearuni.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, -1, -1));
+
+        jButton2.setText("Limpiar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        crearuni.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, -1, -1));
 
         jButton3.setText("Salir");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -45,54 +162,119 @@ public class Hakuōki extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        crearuni.getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 510, -1, -1));
 
-        jButton4.setText("Administar");
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
-        jButton5.setText("Mostrar");
+        crearuni.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 520, 140));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(352, 352, 352)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
-                .addGap(179, 179, 179))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addGap(84, 84, 84)
-                .addComponent(jButton3)
-                .addGap(173, 173, 173))
-        );
+        jButton4.setText("Agregar");
+        crearuni.getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, -1));
+
+        jButton5.setText("Crear");
+        crearuni.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, -1, -1));
+
+        jLabel13.setText("Personas sin universo");
+        crearuni.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        crearp.setBackground(new java.awt.Color(255, 51, 51));
+        crearp.setText("Crear Persona");
+        crearp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(crearp, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
+
+        crearU.setBackground(new java.awt.Color(204, 0, 0));
+        crearU.setText("Crear Universo");
+        crearU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearUActionPerformed(evt);
+            }
+        });
+        getContentPane().add(crearU, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, -1, -1));
+
+        sal.setBackground(new java.awt.Color(204, 0, 0));
+        sal.setText("Salir");
+        sal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salActionPerformed(evt);
+            }
+        });
+        getContentPane().add(sal, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, -1, -1));
+
+        admin.setBackground(new java.awt.Color(204, 0, 0));
+        admin.setText("Administar");
+        getContentPane().add(admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
+
+        mos.setBackground(new java.awt.Color(204, 0, 0));
+        mos.setText("Mostrar");
+        getContentPane().add(mos, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 330, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel1.setText("Bienvenido Guerrer@ Samurai");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jhon Zuniga\\Documents\\NetBeansProjects\\Lab#6_JarodZuniga_s7\\maxresdefault-22.jpg")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-900, -20, -1, 1330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void salActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salActionPerformed
         System.exit(0);
+    }//GEN-LAST:event_salActionPerformed
+
+    private void crearpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearpActionPerformed
+        crearper.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_crearpActionPerformed
+
+    private void salperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salperActionPerformed
+        crearper.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_salperActionPerformed
+
+    private void limpperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpperActionPerformed
+       jTextField1.setText("");
+       jTextField2.setText("");
+       jTextField3.setText("");
+       jTextField4.setText("");
+    }//GEN-LAST:event_limpperActionPerformed
+
+    private void aggperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggperActionPerformed
+        String nombre,planeta,raza;
+        int poder,años;
+        nombre=jTextField1.getText();
+        poder=Integer.parseInt(jTextField2.getText());
+        años=Integer.parseInt(jTextField3.getText());
+        planeta=jTextField4.getText();
+        raza=(String) jComboBox1.getSelectedItem();
+        personas.add(new Sere_Vivos(nombre, poder, años, planeta, raza));
+    }//GEN-LAST:event_aggperActionPerformed
+
+    private void crearUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUActionPerformed
+       crearuni.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_crearUActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        crearuni.setVisible(false);
+        this.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jTextField5.setText("");
+        jTextArea1.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,29 +293,63 @@ public class Hakuōki extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Hakuōki.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hakuoki.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Hakuōki.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hakuoki.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Hakuōki.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hakuoki.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Hakuōki.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hakuoki.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Hakuōki().setVisible(true);
+                new Hakuoki().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton admin;
+    private javax.swing.JButton aggper;
+    private javax.swing.JButton crearU;
+    private javax.swing.JButton crearp;
+    private javax.swing.JFrame crearper;
+    private javax.swing.JFrame crearuni;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JButton limpper;
+    private javax.swing.JButton mos;
+    private javax.swing.JButton sal;
+    private javax.swing.JButton salper;
     // End of variables declaration//GEN-END:variables
-}
+ArrayList personas=new ArrayList();
+    ArrayList universi= new ArrayList();
+            }
