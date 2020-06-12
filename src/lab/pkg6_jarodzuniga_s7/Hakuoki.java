@@ -5,7 +5,16 @@
  */
 package lab.pkg6_jarodzuniga_s7;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
 
 /**
@@ -146,6 +155,11 @@ public class Hakuoki extends javax.swing.JFrame {
         crearuni.getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 370, -1));
 
         jButton1.setText("Crear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         crearuni.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, -1, -1));
 
         jButton2.setText("Limpiar");
@@ -173,8 +187,8 @@ public class Hakuoki extends javax.swing.JFrame {
         jButton4.setText("Agregar");
         crearuni.getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, -1));
 
-        jButton5.setText("Crear");
-        crearuni.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, -1, -1));
+        jButton5.setText("Refrescar");
+        crearuni.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, -1, -1));
 
         jLabel13.setText("Personas sin universo");
         crearuni.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
@@ -244,25 +258,25 @@ public class Hakuoki extends javax.swing.JFrame {
     }//GEN-LAST:event_salperActionPerformed
 
     private void limpperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpperActionPerformed
-       jTextField1.setText("");
-       jTextField2.setText("");
-       jTextField3.setText("");
-       jTextField4.setText("");
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
     }//GEN-LAST:event_limpperActionPerformed
 
     private void aggperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggperActionPerformed
-        String nombre,planeta,raza;
-        int poder,años;
-        nombre=jTextField1.getText();
-        poder=Integer.parseInt(jTextField2.getText());
-        años=Integer.parseInt(jTextField3.getText());
-        planeta=jTextField4.getText();
-        raza=(String) jComboBox1.getSelectedItem();
+        String nombre, planeta, raza;
+        int poder, años;
+        nombre = jTextField1.getText();
+        poder = Integer.parseInt(jTextField2.getText());
+        años = Integer.parseInt(jTextField3.getText());
+        planeta = jTextField4.getText();
+        raza = (String) jComboBox1.getSelectedItem();
         personas.add(new Sere_Vivos(nombre, poder, años, planeta, raza));
     }//GEN-LAST:event_aggperActionPerformed
 
     private void crearUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUActionPerformed
-       crearuni.setVisible(true);
+        crearuni.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_crearUActionPerformed
 
@@ -275,6 +289,48 @@ public class Hakuoki extends javax.swing.JFrame {
         jTextField5.setText("");
         jTextArea1.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        try {                                         
+            
+            FileWriter fw = null;
+            BufferedWriter bw = null;
+            try {
+                File archivo = new File ("./salida.txt");
+                fw = new FileWriter (archivo, true);
+                bw = new BufferedWriter (fw);
+                String linea=JOptionPane.showInputDialog ("escriba algo");
+                bw.write(linea);
+                bw.newLine ();
+                bw.flush();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+            bw.close();
+            fw.close();
+            
+            JFileChooser jfc = new JFileChooser();
+            String direc = "";
+            try {
+                if (jfc.showSaveDialog(null) == jfc.APPROVE_OPTION) {
+                    direc = jfc.getSelectedFile().getAbsolutePath();
+                    
+                    File archivo = new File(direc);
+                    FileWriter ec = new FileWriter(archivo);
+                    ec.write(jTextField5.getText());
+                    ec.close();
+                    
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            
+        } catch (IOException ex){
+            Logger.getLogger(Hakuoki.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,16 +346,24 @@ public class Hakuoki extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Hakuoki.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hakuoki.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Hakuoki.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hakuoki.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Hakuoki.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hakuoki.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Hakuoki.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hakuoki.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -350,6 +414,7 @@ public class Hakuoki extends javax.swing.JFrame {
     private javax.swing.JButton sal;
     private javax.swing.JButton salper;
     // End of variables declaration//GEN-END:variables
-ArrayList personas=new ArrayList();
-    ArrayList universi= new ArrayList();
-            }
+ArrayList personas = new ArrayList();
+    ArrayList universi = new ArrayList();
+
+}
