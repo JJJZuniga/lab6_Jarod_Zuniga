@@ -5,28 +5,32 @@
  */
 package lab.pkg6_jarodzuniga_s7;
 
+import java.awt.PopupMenu;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
 
 /**
  *
  * @author Jhon Zuniga
  */
-public class Hakuoki extends javax.swing.JFrame {
+public class Gitama extends javax.swing.JFrame {
 
     /**
      * Creates new form Hakuōki
      */
-    public Hakuoki() {
+    public Gitama() {
         initComponents();
     }
 
@@ -63,11 +67,12 @@ public class Hakuoki extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jButton6 = new javax.swing.JButton();
         crearp = new javax.swing.JButton();
         crearU = new javax.swing.JButton();
         sal = new javax.swing.JButton();
@@ -178,20 +183,36 @@ public class Hakuoki extends javax.swing.JFrame {
         });
         crearuni.getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 510, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        crearuni.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 520, 140));
-
         jButton4.setText("Agregar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         crearuni.getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, -1));
 
         jButton5.setText("Refrescar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         crearuni.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, -1, -1));
 
         jLabel13.setText("Personas sin universo");
         crearuni.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
+
+        jScrollPane2.setViewportView(jList1);
+
+        crearuni.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 510, -1));
+
+        jButton6.setText("Seleccionar destino");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        crearuni.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -287,50 +308,91 @@ public class Hakuoki extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jTextField5.setText("");
-        jTextArea1.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            String name = jTextField5.getText();
+            universi.add(new Universo(name));
+            Universo f=new Universo(name);
+            f.getLista().add(aggpers);
+            f.setLista(aggpers);
+            f.escribirArchivo();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Gitama.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        try {                                         
-            
-            FileWriter fw = null;
-            BufferedWriter bw = null;
-            try {
-                File archivo = new File ("./salida.txt");
-                fw = new FileWriter (archivo, true);
-                bw = new BufferedWriter (fw);
-                String linea=JOptionPane.showInputDialog ("escriba algo");
-                bw.write(linea);
-                bw.newLine ();
-                bw.flush();
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-            bw.close();
-            fw.close();
-            
-            JFileChooser jfc = new JFileChooser();
-            String direc = "";
-            try {
-                if (jfc.showSaveDialog(null) == jfc.APPROVE_OPTION) {
-                    direc = jfc.getSelectedFile().getAbsolutePath();
-                    
-                    File archivo = new File(direc);
-                    FileWriter ec = new FileWriter(archivo);
-                    ec.write(jTextField5.getText());
-                    ec.close();
-                    
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-            
-        } catch (IOException ex){
-            Logger.getLogger(Hakuoki.class.getName()).log(Level.SEVERE, null, ex);
-        }  
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        //Crear un objeto DefaultListModel
+        DefaultListModel listModel = new DefaultListModel();
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < personas.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, personas.get(i));
+        }
+//Asociar el modelo de lista al JList
+        jList1.setModel(listModel);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        aggpers.clear();
+        int a = jList1.getSelectedIndex();
+        aggpers.add(personas.get(a));
+        personas.remove(a);
+        //Crear un objeto DefaultListModel
+        DefaultListModel listModel = new DefaultListModel();
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < personas.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, personas.get(i));
+        }
+//Asociar el modelo de lista al JList
+        jList1.setModel(listModel);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        JFileChooser jfc = new JFileChooser();
+            FileNameExtensionFilter filtro
+                    = new FileNameExtensionFilter(
+                            "Archivos de Texto", "txt");
+            jfc.addChoosableFileFilter(filtro);
+            int seleccion = jfc.showSaveDialog(this);
+            FileWriter fw = null;
+            BufferedWriter bw = null;
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                try {
+                    
+                    File fichero = null;
+                    if (jfc.getFileFilter().getDescription().equals(
+                            "Archivos de Texto")) {
+                        fichero
+                                = new File(jfc.getSelectedFile().getPath() + ".txt");
+                    } else {
+                        fichero = jfc.getSelectedFile();
+                    }
+                    fw = new FileWriter(fichero);
+                    bw = new BufferedWriter(fw);
+                    bw.write(jTextField5.getText());
+                    jTextField5.setText("");
+                    bw.flush();
+                    JOptionPane.showMessageDialog(this,
+                            "Archivo guardado exitosamente");
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    bw.close();
+                    fw.close();
+                } catch (IOException ex) {
+                }
+            }//fin IF
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,28 +412,30 @@ public class Hakuoki extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Hakuoki.class
+            java.util.logging.Logger.getLogger(Gitama.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Hakuoki.class
+            java.util.logging.Logger.getLogger(Gitama.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Hakuoki.class
+            java.util.logging.Logger.getLogger(Gitama.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Hakuoki.class
+            java.util.logging.Logger.getLogger(Gitama.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Hakuoki().setVisible(true);
+                new Gitama().setVisible(true);
             }
         });
     }
@@ -388,6 +452,7 @@ public class Hakuoki extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -402,8 +467,8 @@ public class Hakuoki extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -416,5 +481,9 @@ public class Hakuoki extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 ArrayList personas = new ArrayList();
     ArrayList universi = new ArrayList();
+    ArrayList<Sere_Vivos> aggpers = new ArrayList();
+    
+
+
 
 }
